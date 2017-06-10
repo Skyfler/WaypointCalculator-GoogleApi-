@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	<meta charset="utf-8">
+		<title>Waypoints in directions</title>
+		   <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+<!--    <div id="map"></div>-->
+	<div id="waypoint_calculator" class="waypoint_calculator">
+		<div class="title">Instant Quote</div>
+		<div class="error_notif"></div>
+		<!--            <b>Start:</b>-->
+		<div id="start">
+			<div class="input_group">
+				<span class="waypoint_icon"></span>
+				<input class="waypoint_input" placeholder="Origin (public location or exact address)" type="text">
+			</div>
+			<div class="info_win"></div>
+		</div>
+		<!--            <b>Waypoints:</b>-->
+		<div class="stop_waypoints">
+			<div class="stop_waypoint">
+				<div class="input_group">
+					<span class="waypoint_icon"></span>
+					<input class="waypoint_input" placeholder="New waypoint" type="text">
+					<span class="close_btn"></span>
+				</div>
+				<div class="info_win"></div>
+			</div>
+			<div class="stop_waypoint">
+				<div class="input_group">
+					<span class="waypoint_icon"></span>
+					<input class="waypoint_input" placeholder="New waypoint" type="text">
+					<span class="close_btn"></span>
+				</div>
+				<div class="info_win"></div>
+			</div>
+		</div>
+		<!--            <b>End:</b>-->
+		<div id="end">
+			<div class="input_group">
+				<span class="waypoint_icon"></span>
+				<input class="waypoint_input" placeholder="Destination (public location or exact address)" type="text">
+			</div>
+			<div class="info_win"></div>
+		</div>
+		<button class="waypoint_btn" id="add_waypoint">Add</button>
+		<input type="button" id="submit" class="submit" value="Estimate Fare">
+		<select class="cars_select">
+			<option value="opt1">1</option>
+			<option value="opt2">2</option>
+			<option value="opt3">3</option>
+		</select>
+		<div id="directions-panel"></div>
+		<div class="result"></div>
+	</div>
+	<script>
+		var gMapLoaded = false;
+		function gMapLoadedCallback() {
+//            console.log('gMapLoaded');
+			gMapLoaded = true;
+			var customEvent = new CustomEvent('gmaploaded', {
+				bubbles: true
+			});
+
+			document.dispatchEvent(customEvent);
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqdCyt7hqDk9deMW0sM0K-49Bhd0vIymU&libraries=places&callback=gMapLoadedCallback"
+		async defer></script>
+	<script src="waypoint_calculator.js" defer></script>
+</body>
+</html>
